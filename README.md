@@ -1,2 +1,2 @@
 # DeployPipelineProjectX
-Terraform + Kubernetes + Ansible + Helm dpeloy pipeline for Porject-X
+Terraform + Kubernetes + Ansible + Helm deploy pipeline for Porject-X
