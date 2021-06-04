@@ -9,6 +9,7 @@ variable "availability-zone" {
 }
 
 variable "instance-ami" {
+  type    = string
   default = "ami-8964614021ce1"
 }
 
