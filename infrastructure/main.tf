@@ -7,6 +7,12 @@ terraform {
   }
 }
 
+provider "aws" {
+  region     = var.aws_region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+}
+
 module "network" {
   source            = "./modules/network"
   security_group_id = [module.security.security_group_id]
@@ -18,12 +24,6 @@ module "network" {
 module "security" {
   source = "./modules/security"
   vpc_id = module.network.vpc_id
-}
-
-provider "aws" {
-  region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
 }
 
 resource "aws_instance" "web-server-instance" {
