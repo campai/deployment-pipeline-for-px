@@ -16,9 +16,9 @@ provider "aws" {
 module "network" {
   source            = "./modules/network"
   security_group_id = [module.security.security_group_id]
-  cidr_block        = var.subnet-cidr
+  cidr_block        = var.subnet_cidr
   vpc_cidr          = var.vpc_cidr
-  nic_private_ip    = var.nic-private-ip
+  nic_private_ip    = var.nic_private_ip
 }
 
 module "security" {
@@ -27,10 +27,10 @@ module "security" {
 }
 
 resource "aws_instance" "web-server-instance" {
-  ami               = var.instance-ami
+  ami               = var.instance_ami
   instance_type     = var.webserver_instance_type
-  availability_zone = var.availability-zone
-  key_name          = var.instance-key-name
+  availability_zone = var.availability_zone
+  key_name          = var.instance_key_name
 
   network_interface {
     device_index         = 0

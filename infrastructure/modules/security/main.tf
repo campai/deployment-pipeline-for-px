@@ -1,4 +1,3 @@
-
 resource "aws_security_group" "allow_web" {
   name        = "allow web traffic"
   description = "Allows HTTP and HTTPS traffic"

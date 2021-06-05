@@ -15,12 +15,12 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "availability-zone" {
+variable "availability_zone" {
   type    = string
   default = "us-east-1a"
 }
 
-variable "instance-ami" {
+variable "instance_ami" {
   type    = string
   default = "ami-8964614021ce1"
 }
@@ -37,13 +37,13 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
-variable "subnet-cidr" {
+variable "subnet_cidr" {
   description = "Project's subnet CIDR"
   type        = string
   default     = "10.0.1.0/24"
 }
 
-variable "nic-private-ip" {
+variable "nic_private_ip" {
   type    = string
   default = "10.0.1.13"
 }
@@ -57,7 +57,7 @@ variable "webserver_subnet_hosts" {
   ]
 }
 
-variable "instance-key-name" {
+variable "instance_key_name" {
   type    = string
   default = "webserver-key"
 }
