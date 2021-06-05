@@ -1,4 +1,16 @@
-variable "aws-region" {
+variable "aws_access_key" {
+  description = "AWS access key. Set with env variable TF_VAR_aws_access_key"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_secret_key" {
+  description = "AWS secret key. Set with env variable TF_VAR_aws_access_key"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_region" {
   type    = string
   default = "us-east-1"
 }
