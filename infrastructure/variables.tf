@@ -11,12 +11,12 @@ variable "gcp_credentials_file" {
 
 variable "region" {
   type    = string
-  default = "europe-central2"
+  default = "us-west1"
 }
 
 variable "zone" {
   type    = string
-  default = "europe-central2-c"
+  default = "us-west1-c"
 }
 
 variable "vpc_name" {
