@@ -1,9 +1,2 @@
-webserver_instance_type = "t2.micro"
-
-subnet_cidr    = "10.0.2.0/24"
-nic_private_ip = "10.0.2.13"
-
-webserver_subnet_hosts = [
-  "10.0.2.3",
-  "10.0.2.13",
-]
+vpc_name     = "project-x-vpc-stg"
+machine_type = "f1-micro"

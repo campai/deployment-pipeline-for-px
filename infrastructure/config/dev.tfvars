@@ -1,9 +1,3 @@
-webserver_instance_type = "t2.micro"
-
-subnet_cidr    = "10.0.3.0/24"
-nic_private_ip = "10.0.3.13"
-
-webserver_subnet_hosts = [
-  "10.0.3.10",
-  "10.0.3.11",
-]
+vpc_name             = "project-x-vpc-dev"
+gcp_credentials_file = "~/.gcloud/keys/psychic-surf-316617-ffd52494f037.json"
+machine_type         = "f1-micro"
