@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-ms-test
+  name: sample-ms-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-ms-test
+  template:
+    metadata:
+      labels:
+        app: sample-ms-test
+    spec:
+      terminationGracePeriodSeconds: 15
+      containers:
+        - image: gcr.io/psychic-surf-316617/sample-ms
+          name: sample-ms
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            timeoutSeconds: 5
+            httpGet:
+              port: 8080
+              path: actuator/health/liveness
+          readinessProbe:
+            timeoutSeconds: 5
+            httpGet:
+              port: 8080
+              path: actuator/health/readiness
+          env:
+            - name: MS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sample-app-secrets
+                  key: ms-password
+            - name: MS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: sample-app-secrets
+                  key: ms-username
+            - name: sample-ms.github.token
+              valueFrom:
+                secretKeyRef:
+                  key: github.pass
+                  name: github-secrets
+            - name: sample-ms.github.user
+              valueFrom:
+                secretKeyRef:
+                  key: github.user
+                  name: github-secrets
+          volumeMounts:
+            - name: github-secrets
+              mountPath: "/etc/secrets/github"
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: github-secrets
+          secret:
+            secretName: github-secrets
+            items:
+              - key: github.user
+                path: user
+              - key: github.pass
+                path: password
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sample-ms-test
+  name: sample-ms-test
+spec:
+  ports:
+    - name: http-port
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: sample-ms-test
+  type: LoadBalancer
+
+---
+
+# just for testing purposes (fake data for local runs), otherwise not needed
+apiVersion: v1
+data:
+  ms-password: bm90X3JlYWxfcGFzcwo=
+stringData:
+  ms-username: twoja_stara
+kind: Secret
+metadata:
+  name: sample-app-secrets
+
+---
+
+apiVersion: v1
+data:
+  github.pass: bm90X3JlYWxfcGFzcwo=
+  github.user: dGVzdAo=
+kind: Secret
+metadata:
+  name: github-secrets
