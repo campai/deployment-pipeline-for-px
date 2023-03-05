@@ -51,9 +51,9 @@ module "cluster" {
 }
 
 
-module "deployments" {
-  source = "./modules/deployments"
-}
+//module "deployments" {
+//  source = "./modules/deployments"
+//}
 
 
 

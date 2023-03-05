@@ -28,6 +28,6 @@ output "vpc_gke_subnet_name" {
   description = "GKE subnet name"
 }
 
-output "lb_ip" {
-  value = module.deployments.lb_ip
-}
+//output "lb_ip" {
+//  value = module.deployments.lb_ip
+//}

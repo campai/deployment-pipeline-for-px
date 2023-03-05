@@ -20,6 +20,7 @@ resource "google_container_node_pool" "gke_node_pool" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/devstorage.read_only"
     ]
 
     labels = {
