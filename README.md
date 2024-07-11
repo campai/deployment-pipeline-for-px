@@ -1,5 +1,5 @@
-# Deployment Pipeline for Project-X
-Terraform + Kubernetes + Ansible + Helm deployment pipeline for private "Project-X" system.
+# Deployment Pipeline for project PX
+Terraform + Kubernetes + Ansible + Helm deployment pipeline for project PX.
 
-- GCP & AWS versions (see branches)
-- master branch is extended GCP version
+- GCP & AWS versions (branches)
+- master branch contains extended GCP version
